@@ -39,8 +39,24 @@ Return `true` if it is possible to remove one element from the array in order to
 ## Code
 
 ```javascript
+/*
+ NOTE
+ this is a unique easy but hard problem. So read the explanation to gain 100% understandin
+*/
 function solution(sequence) {
-  // so we need to chek every iteration in i<i+1 if its false increase the count
+  /*
+  the main idea of this code it just simple iteration, if
+  sequence[i]>sequence[i+1] add count+=1 and if the count
+  is greater than 1 just return false
+
+  However this wont work if
+  - [1 , 2, 1, 2]
+
+  hence we need to have a additional nested if loops
+    we just need two conditional if statement because it only need 2 count to make it wrong
+    1. sequence[i + 1] <= sequence[i - 1] in the same condition sequence[i] <= sequence[i - 2]
+    the second if statement looks like to make sure if the i is the one is anomaly
+  */
   let count = 0;
   for (let i = 0; i < sequence.length; i++) {
     if (sequence[i] <= sequence[i - 1]) {
